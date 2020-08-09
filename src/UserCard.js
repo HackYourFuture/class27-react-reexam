@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams, useHistory } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 function UserCard({ userList }) {
   const { id } = useParams();
   const history = useHistory();
-  const selectedUser = userList.find((person) => person.login.uuid === id);
+  const selectedUser = userList.find((user) => user.login.uuid === id);
   return (
     <>
     <div className='container'>
