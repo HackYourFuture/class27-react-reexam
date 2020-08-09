@@ -9,9 +9,10 @@ import Button from "@material-ui/core/Button";
 function UserCard({ userList }) {
   const { id } = useParams();
   const history = useHistory();
-  const selectedUser = userList.find((person) => person.login.uuid === id); //Finding the person onclicked
+  const selectedUser = userList.find((person) => person.login.uuid === id);
   return (
     <>
+    <div className='container'>
       {selectedUser && (
        
         <Card>
@@ -33,7 +34,7 @@ function UserCard({ userList }) {
           </CardContent>
         </Card>
       )}
-    </>
+    </div></>
   );
 }
 
