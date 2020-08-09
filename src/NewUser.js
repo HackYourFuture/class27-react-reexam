@@ -1,13 +1,13 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import FetchedUserData from "./FetchedUserData";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import FetchedUserData from './FetchedUserData'
-import UserCard from './UserCard'
-
+import UserCard from "./UserCard";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 const END_POINT = "https://randomuser.me/api/?results=5";
 
 function NewUser() {
   const [loading, setLoading] = useState(false);
-  const [loaded,setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [userList, setUserList] = useState([]);
 
@@ -32,15 +32,21 @@ function NewUser() {
   }, []);
 
   return (
-    <div className='container'>
-      {loading && <CircularProgress color="secondary" />}
-      {loaded && <FetchedUserData userList ={userList}/>}  
-      {hasError && <p>Something went wrong ...</p>}
-      {loaded && <UserCard/>}
-    </div>
+    <Router>
+      <div>
+        <Switch>
+          <Route exact path="/">
+            {loading && <CircularProgress color="secondary" />}
+            {hasError && <p>Something went wrong ...</p>}
+            {loaded && <FetchedUserData userList={userList} />}
+          </Route>
+          <Route exact path="/:id">
+            {loaded && <UserCard userList={userList} />}
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
-
-
 
 export default NewUser;

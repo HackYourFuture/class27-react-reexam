@@ -4,21 +4,15 @@ import { Link } from "react-router-dom";
 
 function FetchedUserData({ userList }) {
 
-  const selectedUser = (userIndex) => {
-    console.log("selected",userList[userIndex.index]);
-    
-    return (<UserCard userList={userList[userIndex.index]}/>) ;
-  };
-
   return (
     <div>
       <ul className="users">
         {userList.map((item, index) => (
           <div className="singleUser">
-            <li onClick={() => selectedUser({ index })} key={index}>
+            <li>
               <Link
                 className="linkClass"
-                to={`/${item.name.first}`}
+                to={`/${item.login.uuid}`}
                 style={{ textDecoration: "none" }}
               >
                 <a href="">
@@ -30,8 +24,8 @@ function FetchedUserData({ userList }) {
                     {item.name.first} {item.name.last}{" "}
                   </p>
                 </div>
-                <UserCard userList={userList} />
               </Link>
+              <UserCard userList={userList}/>
             </li>
           </div> 
         ))}

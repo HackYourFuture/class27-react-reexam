@@ -1,32 +1,37 @@
-
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
 
 function UserCard({ userList }) {
- 
-  const { userName } = useParams();
-  console.log(userName);
-
-   const [selectedUser,setSelectedUser] = useState('');
-  
-  // useEffect(() => {
-  //  console.log("userList,",userList);
-  //  if(userList){
-  
-  //   const result = userList.filter(user => {
-  //     return  user.name.first === userName
-  //   });
-  //   if(result)
-  //   setSelectedUser(result);
-  //  }
-
-  // }, []);
-
-
+  const { id } = useParams();
+  const history = useHistory();
+  const selectedUser = userList.find((person) => person.login.uuid === id); //Finding the person onclicked
   return (
     <>
       {selectedUser && (
-        <p>adfdf</p>
+       
+        <Card>
+           <Button variant="contained" color="secondary" onClick={() => history.goBack()} >Go Back</Button>
+          <CardContent>
+            <Avatar alt="Remy Sharp" src={selectedUser.picture.medium} />
+            <Typography variant="h5" component="h2">
+              {selectedUser.name.first} {selectedUser.name.last}
+            </Typography>
+            <Typography color="textSecondary" gutterBottom>
+              {selectedUser.email}
+            </Typography>
+
+            <Typography variant="body2" component="p">
+              {selectedUser.cell}
+              <br />
+              {selectedUser.location.city}, {selectedUser.location.country}
+            </Typography>
+          </CardContent>
+        </Card>
       )}
     </>
   );
