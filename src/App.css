@@ -1,0 +1,39 @@
+body{
+    text-align: center;
+}
+
+.Users{
+    display: flex;
+    margin: 5em auto;
+    justify-content: space-between;
+    max-width: 1300px;
+}
+
+.OneUser{
+    width: 300px;
+    margin: 0 1em;
+}
+
+.UsersImage{
+    cursor: pointer;
+}
+
+.ButtonToHome{
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 1em 1em;
+    margin: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.userInfo{
+    border: 1px solid rgb(82, 82, 82);
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.userInfo ul{
+    list-style: none;
+}
