@@ -1,0 +1,12 @@
+.users {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.oneUser {
+  margin-top: 10%;
+  /* display: flex;
+  flex-direction: column; */
+  text-align: center;
+  border: 1px solid;
+}
